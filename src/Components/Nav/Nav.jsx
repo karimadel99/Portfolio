@@ -16,8 +16,8 @@ export default function Nav() {
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
               <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white font-montserrat">KA.</span>
             <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-              <Link to='' type="button" className="text-white bg-indigo-700 font-roboto hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"><FontAwesomeIcon icon={faFileAlt} className="mr-2" />
-              Resume</Link>
+            <Link to='https://drive.google.com/file/d/1Oj5L3Co2xUr3ZcunFbHwMg-524lQqgwy/view?usp=drive_link' type="button" className="text-white bg-indigo-700 font-roboto hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"><FontAwesomeIcon icon={faFileAlt} className="mr-2" />
+            Resume</Link>
               <button 
                 onClick={toggleMenu} 
                 type="button" 
