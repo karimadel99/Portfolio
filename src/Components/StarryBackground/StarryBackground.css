@@ -1,0 +1,32 @@
+/* StarryBackground.css */
+.starry-background {
+    position: fixed; /* Fixed positioning to cover entire viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1; /* Ensure it’s behind other content */
+    background-color: #000; /* Black background for space */
+  }
+  
+  .starry-background .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 2s infinite alternate;
+  }
+  
+  @keyframes twinkle {
+    from {
+      opacity: 0.6;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

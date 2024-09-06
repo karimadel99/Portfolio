@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.glow-effect {
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.8), 0 0 20px rgba(139, 92, 246, 0.6),
+      0 0 60px rgba(139, 92, 246, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .glow-effect:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 1), 0 0 30px rgba(139, 92, 246, 0.8),
+      0 0 90px rgba(139, 92, 246, 0.6);
+  }
