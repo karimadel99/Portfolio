@@ -2,7 +2,7 @@ import TypingEffect from 'react-typing-effect';
 import { Link } from 'react-router-dom';
 import myPic from '@/assets/me-Photoroom.png';
 import devSvg from '@/assets/Developer activity-amico.png';
-import { FaCode, FaChalkboardTeacher, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaCode, FaBrain, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const cursorRenderer = cursor => <span>{cursor}</span>;
 
@@ -10,7 +10,7 @@ const displayTextRenderer = (text) => {
   const icon =
     text === 'Frontend Engineer'  ? <FaCode className="inline ml-2" /> :
     text === 'React.js Developer' ? <FaCode className="inline ml-2" /> :
-    text === 'AI Integrations'    ? <FaChalkboardTeacher className="inline ml-2" /> :
+    text === 'AI Integrations'    ? <FaBrain className="inline ml-2" /> :
     null;
   return <span>{text}{icon}</span>;
 };
