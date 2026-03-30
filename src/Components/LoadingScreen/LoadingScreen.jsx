@@ -1,20 +1,12 @@
-import React from 'react'
-import { Triangle } from 'react-loader-spinner';
-
 export default function LoadingScreen() {
-    return (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 text-white z-50">
-        <Triangle
-          visible={true}
-          height="80"
-          width="80"
-          color="#7A1CAC"
-          ariaLabel="triangle-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
-        <div className="text-3xl font-bold mt-5">Loading...</div>
-      </div>
-    );
-  };
-
+  return (
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-gray-950 z-50 gap-4">
+      <span className="text-6xl font-bold font-montserrat text-indigo-400 animate-pulse-glow">
+        KA.
+      </span>
+      <span className="text-gray-400 text-sm tracking-widest uppercase animate-pulse">
+        Loading
+      </span>
+    </div>
+  );
+}
