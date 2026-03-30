@@ -4,9 +4,9 @@ import { FaFileAlt } from 'react-icons/fa';
 import { navLinks } from '@/data/navLinks';
 
 const activeClass =
-  'block py-2 px-3 text-white bg-indigo-700 rounded md:bg-transparent md:text-indigo-700 md:p-0 md:dark:text-indigo-500';
+  'block py-2 px-3 text-indigo-400 font-semibold md:p-0';
 const inactiveClass =
-  'block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-indigo-700 md:p-0 md:dark:hover:text-indigo-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700';
+  'block py-2 px-3 text-slate-300 rounded hover:text-white hover:bg-slate-800 md:hover:bg-transparent md:hover:text-indigo-400 md:p-0 transition-colors';
 const navLinkClass = ({ isActive }) => (isActive ? activeClass : inactiveClass);
 
 export default function Nav() {
@@ -23,8 +23,8 @@ export default function Nav() {
 
   return (
     <nav
-      className={`bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-gray-200 dark:border-gray-600 transition-shadow duration-300 ${
-        scrolled ? 'shadow-lg backdrop-blur-sm' : ''
+      className={`bg-slate-900/90 backdrop-blur-md border-b border-slate-800 fixed w-full z-20 top-0 start-0 transition-shadow duration-300 ${
+        scrolled ? 'shadow-lg shadow-indigo-950/50' : ''
       }`}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -68,7 +68,7 @@ export default function Nav() {
             isMenuOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'
           }`}
         >
-          <ul className="flex font-roboto flex-col text-xl p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-12 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex font-roboto flex-col text-xl p-4 md:p-0 mt-4 font-medium border border-slate-700 rounded-lg bg-slate-800 md:space-x-12 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
             {navLinks.map(({ to, icon: Icon, label, end }) => (
               <li key={to}>
                 <NavLink
