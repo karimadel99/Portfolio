@@ -28,12 +28,57 @@ export default function About() {
             Who <span className="text-indigo-300">I am?</span>
           </h1>
           <p className="text-xl font-roboto">
-            Hi, I'm Karim Adel, a passionate Front-End Developer and a Bachelor
-            of Computer Science and Artificial Intelligence student at Helwan
-            University, Cairo. With a strong foundation in programming and a
-            love for crafting responsive, user-friendly web applications, I'm on
-            a journey to build impactful digital experiences.
+            Hi, I'm Karim Adel — a Frontend Engineer and CS/AI graduate from Helwan
+            University (2025). I specialize in React.js, Next.js, and Tailwind CSS,
+            with production experience building SaaS and MedTech platforms with AI
+            integrations. Currently expanding into generative AI, agents, and data science.
           </p>
+        </div>
+      </div>
+
+      {/* Experience */}
+      <div className="bg-slate-300/5 backdrop-blur-sm text-white py-20">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl text-indigo-400 font-bold font-montserrat">Experience</h2>
+        </div>
+        <div className="w-4/5 mx-auto space-y-8">
+
+          <div className="border-l-4 border-indigo-500 pl-6">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 mb-1">
+              <h3 className="text-xl font-semibold text-white">Front-End React.js Developer</h3>
+              <span className="text-sm text-slate-400 font-roboto">Feb 2025 – Present</span>
+            </div>
+            <p className="text-indigo-400 font-medium font-roboto mb-2">MedTech Soficopharm · Fulltime, Hybrid</p>
+            <p className="text-slate-300 font-roboto">
+              Designed and implemented a SaaS clinic management platform enabling doctors to manage clinics,
+              patients, and schedules. Integrated Google Maps API, multilingual support, and automated booking workflows.
+            </p>
+          </div>
+
+          <div className="border-l-4 border-indigo-500/60 pl-6">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 mb-1">
+              <h3 className="text-xl font-semibold text-white">Front-End React.js Developer</h3>
+              <span className="text-sm text-slate-400 font-roboto">Sep 2024 – Jan 2025</span>
+            </div>
+            <p className="text-indigo-400 font-medium font-roboto mb-2">Silicon Squire · Freelance, Remote</p>
+            <p className="text-slate-300 font-roboto">
+              Built a dynamic product showcase for Babil Agency using React.js and Tailwind CSS.
+              Developed reusable components to handle variable data structures, enhancing maintainability.
+            </p>
+          </div>
+
+          <div className="border-l-4 border-indigo-500/40 pl-6">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 mb-1">
+              <h3 className="text-xl font-semibold text-white">Coding Instructor</h3>
+              <span className="text-sm text-slate-400 font-roboto">Jan 2023 – May 2024</span>
+            </div>
+            <p className="text-indigo-400 font-medium font-roboto mb-2">Mind Builders Academy</p>
+            <p className="text-slate-300 font-roboto">
+              Taught 250+ students across Scratch, Python, HTML, CSS, JavaScript, and Bootstrap.
+              Created practical workshops improving student coding accuracy and project design quality.
+            </p>
+          </div>
+
         </div>
       </div>
 
@@ -64,13 +109,10 @@ export default function About() {
         <div className="w-3/5 mx-auto">
           <h2 className="text-4xl text-indigo-400 font-bold font-montserrat">Looking Forward</h2>
           <p className="mt-5 py-7 font-roboto text-2xl">
-            I'm always eager to take on new challenges, whether it's working on
-            innovative projects, collaborating with teams, or mentoring others
-            in their coding journeys. I'm excited about the future of technology
-            and am dedicated to making my mark in the industry by building
-            cutting-edge, high-performance applications. When I'm not coding,
-            you might find me exploring new tech, tinkering with design
-            patterns, or simply enjoying a good game.
+            I'm always eager to take on new challenges — building innovative products,
+            collaborating with teams, and pushing into new territory. Currently diving
+            deep into generative AI, agents, and data science. Excited to bring those
+            capabilities into the products I build next.
           </p>
         </div>
       </div>
