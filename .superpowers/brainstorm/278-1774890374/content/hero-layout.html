@@ -1,0 +1,73 @@
+<h2>Hero section layout?</h2>
+<p class="subtitle">First thing visitors see — pick the layout that feels right for you.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#05081a;padding:14px;border-radius:8px;min-height:140px;position:relative;overflow:hidden;">
+        <!-- stars suggestion -->
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%, rgba(99,102,241,0.12) 0%, transparent 60%)"></div>
+        <div style="display:flex;align-items:center;gap:12px;height:110px;position:relative;">
+          <div style="flex:1;">
+            <div style="color:#94a3b8;font-size:8px;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Hello, I'm</div>
+            <div style="color:#fff;font-size:20px;font-weight:800;line-height:1.1;margin-bottom:4px;">Khaled A.</div>
+            <div style="color:#818cf8;font-size:9px;letter-spacing:1px;margin-bottom:8px;">Full Stack Developer</div>
+            <div style="display:flex;gap:4px;">
+              <div style="background:#4f46e5;color:#fff;font-size:7px;padding:3px 8px;border-radius:4px;">View Projects</div>
+              <div style="border:1px solid #4f46e5;color:#818cf8;font-size:7px;padding:3px 8px;border-radius:4px;">About Me</div>
+            </div>
+          </div>
+          <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#312e81,#4f46e5);border:2px solid rgba(99,102,241,0.5);display:flex;align-items:center;justify-content:center;color:#a5b4fc;font-size:18px;font-weight:800;flex-shrink:0;">KA</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Current Layout, Refined</h3>
+      <p>Keep text-left + photo-right, but add CTA buttons, better type hierarchy, and a subtle indigo glow behind the photo. Familiar but elevated.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#05081a;padding:14px;border-radius:8px;min-height:140px;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%, rgba(99,102,241,0.18) 0%, transparent 65%)"></div>
+        <div style="text-align:center;padding-top:10px;position:relative;">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#312e81,#4f46e5);border:2px solid rgba(99,102,241,0.6);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#a5b4fc;font-size:14px;font-weight:800;">KA</div>
+          <div style="color:#fff;font-size:22px;font-weight:800;line-height:1;margin-bottom:3px;">Khaled A.</div>
+          <div style="color:#818cf8;font-size:8px;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;">Full Stack Developer</div>
+          <div style="color:#64748b;font-size:8px;max-width:150px;margin:0 auto 10px;line-height:1.4;">Building web apps that are fast, functional, and beautiful.</div>
+          <div style="display:flex;gap:6px;justify-content:center;">
+            <div style="background:#4f46e5;color:#fff;font-size:7px;padding:3px 10px;border-radius:4px;">View Projects</div>
+            <div style="border:1px solid #4f46e5;color:#818cf8;font-size:7px;padding:3px 10px;border-radius:4px;">Resume</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Centered, Minimal</h3>
+      <p>Photo centered at top, name large below it, short tagline, two CTA buttons. Clean and confident — like an author page. Less space used, more focused.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#05081a;padding:0;border-radius:8px;min-height:140px;overflow:hidden;display:flex;">
+        <div style="flex:1;padding:14px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(99,102,241,0.15);">
+          <div style="color:#818cf8;font-size:7px;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Full Stack Dev</div>
+          <div style="color:#fff;font-size:18px;font-weight:800;line-height:1.1;margin-bottom:8px;">Khaled<br/>Ashraf.</div>
+          <div style="color:#64748b;font-size:7px;line-height:1.5;margin-bottom:10px;">React · Node.js<br/>Python · TypeScript</div>
+          <div style="background:#4f46e5;color:#fff;font-size:7px;padding:3px 8px;border-radius:4px;display:inline-block;">View Work ↓</div>
+        </div>
+        <div style="width:80px;background:linear-gradient(160deg, rgba(79,70,229,0.2) 0%, rgba(5,8,26,0.8) 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#1e1b4b,#4338ca);border:2px solid rgba(99,102,241,0.5);display:flex;align-items:center;justify-content:center;color:#a5b4fc;font-size:15px;font-weight:800;">KA</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Split with Accent Panel</h3>
+      <p>Left side: name, title, stack, CTA. Right side: photo in a dark indigo accent panel. Creates visual tension and a modern editorial feel within the dark theme.</p>
+    </div>
+  </div>
+
+</div>
