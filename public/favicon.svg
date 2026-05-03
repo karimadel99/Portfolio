@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="geometricPrecision">
+  <!-- Deep professional blue card -->
+  <rect width="32" height="32" rx="6" fill="#1E3A8A"/>
+
+  <!-- Bold K — single-color stroke construction.
+       Stem and two diagonals share the same line weight so the joint
+       reads as one solid shape at 16x16. -->
+  <g stroke="#F3F4F6" stroke-width="4.2" stroke-linecap="butt" stroke-linejoin="miter" fill="none">
+    <line x1="9.5"  y1="5.5"  x2="9.5"  y2="26.5"/>
+    <line x1="9.5"  y1="16"   x2="20.5" y2="5.5"/>
+    <line x1="9.5"  y1="16"   x2="21"   y2="26.5"/>
+  </g>
+
+  <!-- Orange signal period — echoes the wordmark "Karim Adel." -->
+  <circle cx="25" cy="25.5" r="2.6" fill="#F97316"/>
+</svg>

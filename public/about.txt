@@ -1,6 +1,14 @@
-This favicon was generated using the following font:
+Favicon — Karim Adel Portfolio (2026 redesign)
 
-- Font Title: Poppins
-- Font Author: Copyright 2020 The Poppins Project Authors (https://github.com/itfoundry/Poppins)
-- Font Source: https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLCz7V1tvFP-KUEg.ttf
-- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
+Design
+- 32×32 SVG, blue rounded square (#1E3A8A) with a constructed K in
+  paper (#F3F4F6) and an orange period dot (#F97316) signature.
+- All raster variants (16, 32, 180, 192, 512, .ico) are rasterized from
+  /public/favicon.svg.
+
+Regenerate
+  npm run favicons
+
+Source
+  /public/favicon.svg          ← edit this, then run the script above
+  /scripts/build-favicons.mjs  ← generation script (sharp + png-to-ico)
