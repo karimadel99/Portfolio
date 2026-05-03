@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import { skills } from '@/data/skills';
 import { useInView } from '@/hooks/useInView';
@@ -45,10 +44,6 @@ const TOOLKIT_GROUPS = [
 
 export default function About() {
   const { ref: forwardRef, inView: forwardInView } = useInView();
-  const reduced = useReducedMotion();
-  const fade = reduced
-    ? { initial: { opacity: 0 }, whileInView: { opacity: 1 } }
-    : { initial: { opacity: 0, y: 14 }, whileInView: { opacity: 1, y: 0 } };
 
   const grouped = TOOLKIT_GROUPS.map(g => ({
     ...g,
@@ -109,12 +104,9 @@ export default function About() {
           </div>
 
           <ul className="divide-y divide-[color:var(--rule)] border-t border-rule">
-            {EXPERIENCES.map((e, i) => (
-              <motion.li
+            {EXPERIENCES.map((e) => (
+              <li
                 key={e.company}
-                {...fade}
-                viewport={{ once: true, margin: '-10% 0px' }}
-                transition={{ duration: 0.6, delay: i * 0.05, ease: [0.2, 0.7, 0.2, 1] }}
                 className="grid grid-cols-12 gap-4 md:gap-10 py-8 md:py-12 group hover:bg-blue-ghost transition-colors duration-300"
               >
                 <div className="col-span-2 md:col-span-1 mono text-sm text-ink-3 tracking-[0.2em] pt-1">
@@ -140,7 +132,7 @@ export default function About() {
                     {e.stack.map((t) => <span key={t} className="chip">{t}</span>)}
                   </div>
                 </div>
-              </motion.li>
+              </li>
             ))}
           </ul>
         </div>
@@ -172,11 +164,8 @@ export default function About() {
                 </p>
                 <ul className="flex flex-col gap-3">
                   {items.map(({ icon: Icon, label: name }, idx) => (
-                    <motion.li
+                    <li
                       key={name}
-                      {...fade}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.45, delay: idx * 0.04 }}
                       className="flex items-baseline gap-3 group cursor-default"
                     >
                       <span className="mono text-[0.65rem] text-ink-3 w-7">
@@ -186,7 +175,7 @@ export default function About() {
                       <span className="serif-display text-xl md:text-2xl text-ink leading-none group-hover:text-blue dark:group-hover:text-blue-lit transition-colors duration-200">
                         {name}
                       </span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>

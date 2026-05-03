@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaArrowRight, FaThLarge, FaList, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { projects } from '@/data/projects';
@@ -7,8 +7,6 @@ import ProjectCard from './ProjectCard';
 export default function Projects() {
   const [view, setView] = useState('index'); // 'index' | 'grid'
   const reduced = useReducedMotion();
-
-  const featured = useMemo(() => projects.filter(p => p.featured), []);
 
   const fade = reduced
     ? { initial: { opacity: 0 }, whileInView: { opacity: 1 } }
@@ -33,6 +31,7 @@ export default function Projects() {
               <p className="text-ink-2 text-base md:text-lg leading-relaxed mt-6 max-w-[58ch]">
                 {projects.length} shipped projects spanning AI tools, e-commerce,
                 marketplaces, and small craft pieces. Sorted newest first.
+                <span className="hidden md:inline"> Featured entries are marked.</span>
               </p>
             </div>
 
@@ -71,33 +70,9 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* ── Featured strip (only in index view) ────────────────── */}
-      {view === 'index' && featured.length > 0 && (
-        <section className="relative border-y border-rule bg-paper-2/40">
-          <div className="max-w-screen-xl mx-auto px-6 lg:px-10 py-12 md:py-16">
-            <div className="flex items-baseline justify-between mb-8">
-              <p className="eyebrow">Featured</p>
-              <span className="mono text-[0.7rem] text-ink-3">{featured.length} entries</span>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-              {featured.map((p, i) => (
-                <motion.div
-                  key={p.title}
-                  {...fade}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: i * 0.06 }}
-                >
-                  <ProjectCard project={p} index={projects.indexOf(p)} accent={i === 0} />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* ── Projects body ──────────────────────────────────────── */}
       <section className="relative">
-        <div className="max-w-screen-xl mx-auto px-6 lg:px-10 py-16 md:py-24">
+        <div className="max-w-screen-xl mx-auto px-6 lg:px-10 py-12 md:py-20">
 
           {view === 'grid' ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
@@ -105,7 +80,7 @@ export default function Projects() {
                 <motion.div
                   key={p.title}
                   {...fade}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.5, delay: (i % 3) * 0.06 }}
                 >
                   <ProjectCard project={p} index={i} />
@@ -115,13 +90,7 @@ export default function Projects() {
           ) : (
             <ul className="border-t border-rule">
               {projects.map((p, i) => (
-                <motion.li
-                  key={p.title}
-                  {...fade}
-                  viewport={{ once: true, margin: '-5% 0px' }}
-                  transition={{ duration: 0.55, delay: i * 0.04 }}
-                  className="group border-b border-rule"
-                >
+                <li key={p.title} className="group border-b border-rule">
                   <a
                     href={p.demo}
                     target="_blank"
@@ -136,9 +105,14 @@ export default function Projects() {
 
                     {/* Title + role */}
                     <div className="col-span-10 md:col-span-4">
-                      <h2 className="serif-display text-2xl md:text-4xl text-ink leading-tight group-hover:text-blue dark:group-hover:text-blue-lit transition-colors">
-                        {p.title}
-                      </h2>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h2 className="serif-display text-2xl md:text-4xl text-ink leading-tight group-hover:text-blue dark:group-hover:text-blue-lit transition-colors">
+                          {p.title}
+                        </h2>
+                        {p.featured && (
+                          <span className="chip chip-orange !text-[0.6rem]">Featured</span>
+                        )}
+                      </div>
                       <p className="mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-3 mt-1.5">
                         {p.role}
                       </p>
@@ -160,14 +134,14 @@ export default function Projects() {
 
                     {/* Hover preview image — desktop only */}
                     <span
-                      className="hidden lg:block pointer-events-none absolute right-32 top-1/2 -translate-y-1/2 w-44 h-28 overflow-hidden border border-ink opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 z-10"
+                      className="hidden lg:block pointer-events-none absolute right-32 top-1/2 -translate-y-1/2 w-44 h-28 overflow-hidden border border-ink opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 z-10 shadow-lg"
                       aria-hidden="true"
                     >
                       <img src={p.image} alt="" className="w-full h-full object-cover" />
                     </span>
                   </a>
 
-                  {/* Secondary links — visible always on mobile, on hover desktop */}
+                  {/* Secondary links — visible on mobile, hover-revealed desktop */}
                   <div className="px-2 md:px-3 pb-4 md:pb-3 flex gap-5 md:opacity-0 md:group-hover:opacity-100 md:max-h-0 md:group-hover:max-h-12 md:overflow-hidden transition-all duration-300">
                     {p.repo && (
                       <a
@@ -188,7 +162,7 @@ export default function Projects() {
                       <FaExternalLinkAlt size={10} /> Demo
                     </a>
                   </div>
-                </motion.li>
+                </li>
               ))}
             </ul>
           )}
