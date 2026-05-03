@@ -1,72 +1,76 @@
 import { FaGithub, FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa';
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, index, accent = false }) {
   return (
-    <div className="project-card shimmer-border group rounded-xl overflow-hidden flex flex-col">
-      {/* Image with gradient overlay */}
-      <div className="relative overflow-hidden h-44 flex-shrink-0">
+    <article className={`frame-card ${accent ? 'accent' : ''} group flex flex-col h-full`}>
+      <div className="relative overflow-hidden aspect-[16/10] bg-paper-2">
         <img
           src={project.image}
           alt={project.title}
-          width={600}
-          height={338}
+          width={800}
+          height={500}
           loading="lazy"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+        <span className="absolute top-3 left-3 mono text-[0.65rem] uppercase tracking-[0.2em] bg-paper px-2 py-1 text-ink-2 border border-rule">
+          {String(index + 1).padStart(2, '0')} / {project.year}
+        </span>
+        {project.featured && (
+          <span className="absolute top-3 right-3 chip chip-orange !text-[0.6rem]">
+            Featured
+          </span>
+        )}
       </div>
 
-      {/* Content */}
-      <div className="flex flex-col flex-1 p-5 gap-3">
-        <h4 className="text-base font-bold text-white font-montserrat tracking-wide">
-          {project.title}
-        </h4>
+      <div className="flex flex-col flex-1 p-5 md:p-6 gap-3">
+        <div className="flex items-baseline justify-between gap-3">
+          <h3 className="serif-display text-2xl md:text-3xl text-ink leading-tight">
+            {project.title}
+          </h3>
+          <span className="mono text-[0.65rem] uppercase tracking-[0.18em] text-ink-3 whitespace-nowrap">
+            {project.role}
+          </span>
+        </div>
 
         {project.description && (
-          <p className="text-slate-400 text-sm leading-relaxed flex-1">
+          <p className="text-ink-2 text-sm leading-relaxed flex-1">
             {project.description}
           </p>
         )}
 
-        {/* Tech tags */}
-        {project.tags && project.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {project.tags.map(tag => (
-              <span key={tag} className="tag-pill">{tag}</span>
-            ))}
+        {project.tags?.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 pt-1">
+            {project.tags.map(t => <span key={t} className="chip">{t}</span>)}
           </div>
         )}
 
-        {/* Links */}
-        <div className="flex items-center gap-4 pt-3 border-t border-slate-800/80 mt-auto">
+        <div className="flex items-center gap-5 pt-4 border-t border-rule mt-auto">
           {project.repo && (
             <a
               href={project.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-white transition-colors duration-200"
-              aria-label={`${project.title} GitHub repository`}
+              className="flex items-center gap-1.5 mono text-[0.72rem] uppercase tracking-[0.14em] text-ink-2 hover:text-orange transition-colors"
+              aria-label={`${project.title} source code on GitHub`}
             >
-              <FaGithub size={14} />
-              Code
+              <FaGithub size={13} /> Code
             </a>
           )}
           <a
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors duration-200 group/link ${!project.repo ? '' : 'ml-auto'}`}
+            className={`flex items-center gap-1.5 mono text-[0.72rem] uppercase tracking-[0.14em] text-blue dark:text-blue-lit hover:text-orange transition-colors ${project.repo ? 'ml-auto' : ''}`}
             aria-label={`${project.title} live demo`}
           >
-            <FaExternalLinkAlt size={11} />
-            Live Demo
+            <FaExternalLinkAlt size={11} /> Live
             <FaArrowRight
               size={10}
-              className="opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-200"
+              className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
             />
           </a>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

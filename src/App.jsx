@@ -3,18 +3,20 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LoadingScreen from './Components/LoadingScreen/LoadingScreen';
 import Layout from './Components/Layout/Layout';
 
-const Home = lazy(() => import('./Components/Home/Home'));
-const About = lazy(() => import('./Components/About/About'));
+const Home     = lazy(() => import('./Components/Home/Home'));
+const About    = lazy(() => import('./Components/About/About'));
 const Projects = lazy(() => import('./Components/Projects/Projects'));
+const Contact  = lazy(() => import('./Components/Contact/Contact'));
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
     children: [
-      { index: true, element: <Home /> },
-      { path: 'about', element: <About /> },
-      { path: 'projects', element: <Projects /> },
+      { index: true,        element: <Home /> },
+      { path: 'about',      element: <About /> },
+      { path: 'projects',   element: <Projects /> },
+      { path: 'contact',    element: <Contact /> },
     ],
   },
 ]);
