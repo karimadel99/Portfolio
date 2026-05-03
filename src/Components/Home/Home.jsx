@@ -94,7 +94,7 @@ export default function Home() {
                 className="text-ink-2 dark:text-ink-2 text-base md:text-lg max-w-[58ch] leading-relaxed"
               >
                 I'm a CS/AI graduate from Helwan University building production React
-                interfaces — currently a Frontend Engineer at <span className="text-ink dark:text-paper font-medium">Soficopharm MedTech</span>,
+                interfaces — currently a Frontend Engineer at <span className="text-ink font-semibold">Soficopharm MedTech</span>,
                 shipping a clinic SaaS. On the side I'm pushing into generative AI
                 and agents, and teaching the next 250 students after the last 250.
               </motion.p>
@@ -145,10 +145,10 @@ export default function Home() {
 
               {/* Meta block */}
               <div className="w-full max-w-[320px] mono text-[0.72rem] text-ink-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 pt-2">
-                <span className="text-ink-3">LOC</span> <span>Cairo, EG · Remote</span>
-                <span className="text-ink-3">ROLE</span> <span>Frontend Engineer</span>
-                <span className="text-ink-3">FOCUS</span> <span>React · AI · DX</span>
-                <span className="text-ink-3">EDU</span>  <span>BSc CS·AI · Helwan ’25</span>
+                <span className="text-ink-3">LOC</span>   <span>Cairo, EG · Remote</span>
+                <span className="text-ink-3">ROLE</span>  <span>Frontend Engineer</span>
+                <span className="text-ink-3">STACK</span> <span>React · Next · Tailwind</span>
+                <span className="text-ink-3">EDU</span>   <span>BSc CS·AI · Helwan ’25</span>
               </div>
             </motion.aside>
           </div>

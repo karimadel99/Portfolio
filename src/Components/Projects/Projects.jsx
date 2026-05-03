@@ -73,7 +73,7 @@ export default function Projects() {
 
       {/* ── Featured strip (only in index view) ────────────────── */}
       {view === 'index' && featured.length > 0 && (
-        <section className="relative border-y border-rule bg-paper-2/40 dark:bg-[color:var(--paper-2)]/40">
+        <section className="relative border-y border-rule bg-paper-2/40">
           <div className="max-w-screen-xl mx-auto px-6 lg:px-10 py-12 md:py-16">
             <div className="flex items-baseline justify-between mb-8">
               <p className="eyebrow">Featured</p>

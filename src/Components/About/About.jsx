@@ -80,7 +80,7 @@ export default function About() {
 
             <div className="col-span-12 md:col-span-5 md:col-start-8 flex flex-col gap-5 mt-2">
               <p className="serif-display text-xl md:text-2xl leading-snug text-ink-2 dark:text-ink-2">
-                I'm <span className="text-ink dark:text-paper">Karim Adel</span> — a frontend engineer
+                I'm <span className="text-ink font-semibold">Karim Adel</span> — a frontend engineer
                 and CS/AI graduate from Helwan University ('25). I work in React, Next.js, and
                 Tailwind, with production experience on SaaS and MedTech, and I'm pushing
                 hard into generative AI and agents.

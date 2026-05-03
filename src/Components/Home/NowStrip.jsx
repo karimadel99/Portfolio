@@ -6,7 +6,7 @@ const NOW = [
 
 export default function NowStrip() {
   return (
-    <div className="border-y border-rule bg-paper-2/50 dark:bg-[color:var(--paper-2)]/40">
+    <div className="border-y border-rule bg-paper-2/50">
       <div className="max-w-screen-xl mx-auto px-6 lg:px-10 py-3 flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-8 text-[0.78rem] mono">
         <div className="flex items-center gap-2 text-ink-2">
           <span className="live-dot" aria-hidden="true" />

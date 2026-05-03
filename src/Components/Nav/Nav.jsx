@@ -10,7 +10,7 @@ const linkBase =
 const linkClass = ({ isActive }) =>
   isActive
     ? `${linkBase} text-blue dark:text-blue-lit relative after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:bg-orange`
-    : `${linkBase} text-ink-3 hover:text-ink dark:hover:text-paper`;
+    : `${linkBase} text-ink-3 hover:text-ink`;
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,7 +30,7 @@ export default function Nav() {
     <nav
       className={`fixed top-0 left-0 right-0 z-30 transition-all duration-300 ${
         scrolled
-          ? 'bg-paper/85 dark:bg-[color:var(--paper)]/85 backdrop-blur-md border-b border-rule'
+          ? 'bg-paper/85 backdrop-blur-md border-b border-rule'
           : 'bg-transparent border-b border-transparent'
       }`}
       style={{ color: 'var(--ink)' }}
@@ -44,7 +44,7 @@ export default function Nav() {
           className="flex items-baseline gap-2 group"
           aria-label="Karim Adel — Home"
         >
-          <span className="serif-display text-2xl text-ink dark:text-paper">Karim</span>
+          <span className="serif-display text-2xl text-ink">Karim</span>
           <span className="serif-display text-2xl italic text-orange">Adel</span>
           <span className="mono text-[0.65rem] text-ink-3 tracking-[0.18em] hidden sm:inline ml-1">/ FE+AI</span>
         </Link>
@@ -117,7 +117,7 @@ export default function Nav() {
           isMenuOpen ? 'max-h-80 opacity-100 border-rule' : 'max-h-0 opacity-0 border-transparent'
         }`}
       >
-        <ul className="px-6 py-4 flex flex-col gap-4 bg-paper/95 dark:bg-[color:var(--paper)]/95 backdrop-blur-md">
+        <ul className="px-6 py-4 flex flex-col gap-4 bg-paper/95 backdrop-blur-md">
           {navLinks.map(({ to, label, end }, i) => (
             <li key={to} className="flex items-baseline gap-3">
               <span className="mono text-[0.65rem] text-ink-3">{String(i + 1).padStart(2, '0')}</span>

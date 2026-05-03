@@ -210,18 +210,19 @@ body {
 
 .btn-primary {
   background: var(--blue);
-  color: #fff;
+  color: var(--paper);            /* paper swaps with theme — always good contrast vs blue */
   border-color: var(--blue);
 }
 .btn-primary:hover { background: var(--blue-lit); border-color: var(--blue-lit); }
 
+/* Orange is mid-luminance, so accent button uses hardcoded dark ink in any theme. */
 .btn-accent {
   background: var(--orange);
-  color: var(--ink);
-  border-color: var(--ink);
+  color: #0F1729;
+  border-color: #0F1729;
   font-weight: 600;
 }
-.btn-accent:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--ink); }
+.btn-accent:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 #0F1729; }
 
 .btn-ghost {
   background: transparent;

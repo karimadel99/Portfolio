@@ -13,7 +13,7 @@ export default function Layout() {
 
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue focus:text-white focus:rounded-none focus:font-mono focus:text-sm"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-ink focus:text-paper focus:rounded-none focus:font-mono focus:text-sm"
       >
         Skip to main content
       </a>
