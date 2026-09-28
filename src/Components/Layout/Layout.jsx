@@ -1,15 +1,22 @@
+import { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Footer from '../Footer/Footer';
 import Nav from '../Nav/Nav';
 import Background from '../Background/Background';
+import CommandPalette from '../CommandPalette/CommandPalette';
+import CursorFollower from '../UI/CursorFollower';
+import ScrollProgress from '../UI/ScrollProgress';
 
 export default function Layout() {
   const { pathname } = useLocation();
+  const [paletteOpen, setPaletteOpen] = useState(false);
 
   return (
     <>
       <Background />
+      <ScrollProgress />
+      <CursorFollower />
 
       <a
         href="#main-content"
@@ -18,7 +25,8 @@ export default function Layout() {
         Skip to main content
       </a>
 
-      <Nav />
+      <Nav onOpenPalette={() => setPaletteOpen(true)} />
+      <CommandPalette open={paletteOpen} setOpen={setPaletteOpen} />
 
       <AnimatePresence mode="wait">
         <motion.main

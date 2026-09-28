@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaArrowRight, FaGithub, FaLinkedin, FaCopy, FaCheck, FaEnvelope } from 'react-icons/fa';
 
-const EMAIL = 'karimadel.dev@gmail.com';
+const EMAIL = 'karim.adel9922@gmail.com';
 
 const CHANNELS = [
   {

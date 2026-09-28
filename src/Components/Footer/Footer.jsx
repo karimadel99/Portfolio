@@ -29,7 +29,7 @@ export default function Footer() {
           <div className="col-span-12 md:col-span-4 space-y-4">
             <p className="mono text-[0.7rem] uppercase tracking-[0.2em] text-ink-3">Karim Adel · 2026</p>
             <p className="text-ink-2 text-sm leading-relaxed max-w-xs">
-              Frontend Engineer & AI Integrations.
+              Frontend Tech Lead & AI Integrations.
               Building real products in React, Next.js, and a growing list of LLMs.
             </p>
             <div className="flex items-center gap-2 mono text-[0.7rem] text-ink-3">

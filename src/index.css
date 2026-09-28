@@ -341,6 +341,68 @@ body {
 .dark .photo-editorial img { filter: contrast(1.0) saturate(0.9) brightness(0.95); }
 
 /* ─────────────────────────────────────────────────────────────
+   COMMAND PALETTE (cmdk)
+   ───────────────────────────────────────────────────────────── */
+
+.cmdk-panel {
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  box-shadow: 8px 8px 0 color-mix(in srgb, var(--blue) 85%, transparent);
+  overflow: hidden;
+}
+
+.cmdk-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0.95rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+.cmdk-input::placeholder { color: var(--ink-3); }
+
+.cmdk-list {
+  max-height: min(46vh, 380px);
+  overflow-y: auto;
+  padding: 0.4rem;
+  scroll-padding-block: 0.4rem;
+}
+
+.cmdk-group [cmdk-group-heading] {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 0.7rem 0.75rem 0.35rem;
+}
+
+.cmdk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.6rem 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  cursor: pointer;
+  border-left: 2px solid transparent;
+}
+.cmdk-item[data-selected='true'] {
+  background: color-mix(in srgb, var(--blue) 8%, transparent);
+  color: var(--ink);
+  border-left-color: var(--orange);
+}
+.cmdk-item .cmdk-icon {
+  display: inline-flex;
+  font-size: 0.7rem;
+  color: var(--ink-3);
+}
+.cmdk-item[data-selected='true'] .cmdk-icon { color: var(--orange); }
+
+/* ─────────────────────────────────────────────────────────────
    REDUCED MOTION
    ───────────────────────────────────────────────────────────── */
 

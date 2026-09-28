@@ -1,10 +1,19 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
-import TypingEffect from 'react-typing-effect';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { FaArrowRight, FaGithub, FaLinkedin } from 'react-icons/fa';
 import myPic from '@/assets/me-Photoroom.png';
 import Marquee from './Marquee';
 import NowStrip from './NowStrip';
+import ScrambleText from '../UI/ScrambleText';
+import Magnetic from '../UI/Magnetic';
+
+const ROLES = [
+  'Frontend Tech Lead',
+  'React · Next · TypeScript',
+  'AI Integrations',
+  'Coding Instructor',
+];
 
 const STATS = [
   { value: '02+', label: 'Years building' },
@@ -16,7 +25,7 @@ const PILLARS = [
   {
     no: '01',
     title: 'React Engineering',
-    desc: 'Production React, Next.js, TypeScript and Redux. Component systems that hold up under real product weight — clinics, marketplaces, internal tools.',
+    desc: 'Production React, Next.js, TypeScript and Turborepo monorepos. Component systems that hold up under real product weight — healthcare portals, marketplaces, optimization dashboards.',
   },
   {
     no: '02',
@@ -36,10 +45,18 @@ export default function Home() {
     ? { initial: { opacity: 0 }, animate: { opacity: 1 } }
     : { initial: { opacity: 0, y: 14 }, animate: { opacity: 1, y: 0 } };
 
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const photoY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -60]);
+  const metaY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -28]);
+
   return (
     <>
       {/* ── Hero ───────────────────────────────────────────────── */}
-      <section className="relative">
+      <section ref={heroRef} className="relative">
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10 pt-10 md:pt-20 pb-16">
           <div className="grid grid-cols-12 gap-6 md:gap-10 items-end">
 
@@ -72,20 +89,8 @@ export default function Home() {
                 className="flex flex-wrap items-center gap-2 mono text-sm md:text-base text-ink-2"
               >
                 <span className="text-ink-3">{'>'}</span>
-                <TypingEffect
-                  text={[
-                    'Frontend Engineer',
-                    'React · Next · TypeScript',
-                    'AI Integrations',
-                    'Coding Instructor',
-                  ]}
-                  speed={80}
-                  eraseSpeed={45}
-                  eraseDelay={1600}
-                  typingDelay={400}
-                  cursorRenderer={(c) => <span className="text-orange">{c}</span>}
-                  displayTextRenderer={(t) => <span className="text-ink">{t}</span>}
-                />
+                <ScrambleText phrases={ROLES} className="text-ink" />
+                <span className="text-orange animate-caret" aria-hidden="true">_</span>
               </motion.div>
 
               <motion.p
@@ -94,9 +99,10 @@ export default function Home() {
                 className="text-ink-2 dark:text-ink-2 text-base md:text-lg max-w-[58ch] leading-relaxed"
               >
                 I'm a CS/AI graduate from Helwan University building production React
-                interfaces — currently a Frontend Engineer at <span className="text-ink font-semibold">Soficopharm MedTech</span>,
-                shipping a clinic SaaS. On the side I'm pushing into generative AI
-                and agents, and teaching the next 250 students after the last 250.
+                interfaces — currently the Frontend Tech Lead at <span className="text-ink font-semibold">Soficopharm MedTech</span>,
+                architect and sole builder of a 4-portal patient-support platform.
+                On the side I ship AI products and supply-chain optimization
+                dashboards at Datalentech.
               </motion.p>
 
               <motion.div
@@ -104,12 +110,16 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="flex flex-col sm:flex-row gap-3 pt-2"
               >
-                <Link to="/projects" className="btn btn-accent">
-                  See the work <FaArrowRight size={11} />
-                </Link>
-                <Link to="/contact" className="btn btn-ghost">
-                  Hire / Collaborate
-                </Link>
+                <Magnetic>
+                  <Link to="/projects" className="btn btn-accent">
+                    See the work <FaArrowRight size={11} />
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <Link to="/contact" className="btn btn-ghost">
+                    Hire / Collaborate
+                  </Link>
+                </Magnetic>
               </motion.div>
 
               {/* Stats — inline table-like */}
@@ -133,7 +143,7 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.25, ease: [0.2, 0.7, 0.2, 1] }}
               className="col-span-12 md:col-span-5 lg:col-span-5 flex flex-col items-center md:items-end gap-6"
             >
-              <div className="photo-editorial w-56 sm:w-64 md:w-full max-w-[320px]">
+              <motion.div style={{ y: photoY }} className="photo-editorial w-56 sm:w-64 md:w-full max-w-[320px]">
                 <img
                   src={myPic}
                   alt="Karim Adel"
@@ -141,15 +151,15 @@ export default function Home() {
                   height={400}
                   className="w-full h-auto object-cover aspect-square"
                 />
-              </div>
+              </motion.div>
 
               {/* Meta block */}
-              <div className="w-full max-w-[320px] mono text-[0.72rem] text-ink-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 pt-2">
+              <motion.div style={{ y: metaY }} className="w-full max-w-[320px] mono text-[0.72rem] text-ink-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 pt-2">
                 <span className="text-ink-3">LOC</span>   <span>Cairo, EG · Remote</span>
-                <span className="text-ink-3">ROLE</span>  <span>Frontend Engineer</span>
+                <span className="text-ink-3">ROLE</span>  <span>Frontend Tech Lead</span>
                 <span className="text-ink-3">STACK</span> <span>React · Next · Tailwind</span>
                 <span className="text-ink-3">EDU</span>   <span>BSc CS·AI · Helwan ’25</span>
-              </div>
+              </motion.div>
             </motion.aside>
           </div>
         </div>
@@ -164,7 +174,12 @@ export default function Home() {
       {/* ── What I Build ───────────────────────────────────────── */}
       <section className="relative py-24 md:py-32">
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-12 gap-6 md:gap-10 mb-12 md:mb-20 items-end">
+          <motion.div
+            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, ease: [0.2, 0.7, 0.2, 1] }}
+            className="grid grid-cols-12 gap-6 md:gap-10 mb-12 md:mb-20 items-end">
             <div className="col-span-12 md:col-span-4">
               <p className="eyebrow">02 — Capabilities</p>
               <h2 className="serif-display text-4xl md:text-6xl mt-3 leading-[1] text-ink">
@@ -178,12 +193,16 @@ export default function Home() {
                 actually ship inside real products.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           <ul className="border-t border-rule">
-            {PILLARS.map(({ no, title, desc }) => (
-              <li
+            {PILLARS.map(({ no, title, desc }, i) => (
+              <motion.li
                 key={title}
+                initial={reduced ? { opacity: 0 } : { opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.2, 0.7, 0.2, 1] }}
                 className="grid grid-cols-12 gap-4 md:gap-10 border-b border-rule py-8 md:py-12 group transition-colors duration-300 hover:bg-blue-ghost"
               >
                 <span className="mono text-sm tracking-[0.2em] text-ink-3 col-span-2 md:col-span-1 pt-1">
@@ -195,7 +214,7 @@ export default function Home() {
                 <p className="text-ink-2 dark:text-ink-2 text-base leading-relaxed col-span-12 md:col-span-7 max-w-[58ch]">
                   {desc}
                 </p>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
@@ -204,7 +223,12 @@ export default function Home() {
       {/* ── Connect outro ──────────────────────────────────────── */}
       <section className="relative border-t border-rule">
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10 py-20 md:py-28">
-          <div className="grid grid-cols-12 gap-6 md:gap-10 items-end">
+          <motion.div
+            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, ease: [0.2, 0.7, 0.2, 1] }}
+            className="grid grid-cols-12 gap-6 md:gap-10 items-end">
             <div className="col-span-12 md:col-span-7">
               <p className="eyebrow">03 — Connect</p>
               <h2 className="serif-display text-4xl md:text-6xl lg:text-7xl mt-3 leading-[0.95] text-ink">
@@ -213,10 +237,10 @@ export default function Home() {
             </div>
             <div className="col-span-12 md:col-span-4 md:col-start-9 flex flex-col gap-3 mono text-sm">
               <a
-                href="mailto:karimadel.dev@gmail.com"
+                href="mailto:karim.adel9922@gmail.com"
                 className="editorial-link self-start"
               >
-                karimadel.dev@gmail.com
+                karim.adel9922@gmail.com
               </a>
               <a
                 href="https://github.com/karimadel99"
@@ -234,11 +258,13 @@ export default function Home() {
               >
                 <FaLinkedin size={14} /> linkedin.com/in/karim-adel
               </a>
-              <Link to="/contact" className="btn btn-primary mt-3 self-start">
-                Start a conversation <FaArrowRight size={10} />
-              </Link>
+              <Magnetic className="mt-3 self-start">
+                <Link to="/contact" className="btn btn-primary">
+                  Start a conversation <FaArrowRight size={10} />
+                </Link>
+              </Magnetic>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </>

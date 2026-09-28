@@ -6,26 +6,36 @@ import { useInView } from '@/hooks/useInView';
 const EXPERIENCES = [
   {
     no: '01',
-    role: 'Frontend Engineer',
+    role: 'Frontend Tech Lead',
     company: 'Soficopharm — MedTech',
     type: 'Fulltime · Hybrid',
     date: 'Feb 2025 — Present',
     location: 'Cairo, EG',
-    desc: 'Designed and shipped a SaaS clinic-management platform for doctors — clinics, patients, schedules. Integrated Google Maps, multilingual support, and automated booking.',
-    stack: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
+    desc: 'Promoted from Frontend Engineer (Apr 2026). Architect and sole builder of 4 production portals for a patient-support platform — Turborepo monorepo, OpenAPI-typed client, MSW, Playwright. Own the API contract, auth design, and code reviews. Previously shipped a SaaS clinic-management platform with Google Maps, i18n, and automated booking.',
+    stack: ['React', 'TypeScript', 'Turborepo', 'Tailwind', 'Playwright'],
   },
   {
     no: '02',
+    role: 'Software Engineer',
+    company: 'Datalentech',
+    type: 'Part-time',
+    date: 'Aug 2025 — Present',
+    location: 'Remote',
+    desc: 'Built a 6-screen supply-chain optimization dashboard over a Python backend — forecasting, SKU allocation, forecast evaluation (WAPE/MAPE). Audited and hardened a ~156k-line React recruiting platform: −58% bundle via route splitting, Chakra → Tailwind migration, data-layer collapse onto a generated OpenAPI client.',
+    stack: ['React', 'TypeScript', 'Zod', 'Tailwind'],
+  },
+  {
+    no: '03',
     role: 'Frontend Engineer',
     company: 'Silicon Squire',
-    type: 'Freelance · Remote',
+    type: 'Freelance',
     date: 'Sep 2024 — Jan 2025',
     location: 'Remote',
     desc: 'Built a dynamic product showcase for Babil Agency. Designed reusable components handling variable data structures — clean handoff and maintainability.',
     stack: ['React', 'Tailwind'],
   },
   {
-    no: '03',
+    no: '04',
     role: 'Coding Instructor',
     company: 'Mind Builders Academy',
     type: 'Part-time',
@@ -75,10 +85,10 @@ export default function About() {
 
             <div className="col-span-12 md:col-span-5 md:col-start-8 flex flex-col gap-5 mt-2">
               <p className="serif-display text-xl md:text-2xl leading-snug text-ink-2 dark:text-ink-2">
-                I'm <span className="text-ink font-semibold">Karim Adel</span> — a frontend engineer
-                and CS/AI graduate from Helwan University ('25). I work in React, Next.js, and
-                Tailwind, with production experience on SaaS and MedTech, and I'm pushing
-                hard into generative AI and agents.
+                I'm <span className="text-ink font-semibold">Karim Adel</span> — a frontend tech lead
+                and CS/AI graduate from Helwan University ('25). I work in React, TypeScript, and
+                Tailwind, with production experience on MedTech, SaaS, and supply-chain
+                platforms — and I'm pushing hard into generative AI and agents.
               </p>
               <p className="text-ink-2 text-base leading-relaxed max-w-[58ch]">
                 Two and a half years of teaching shaped how I write code:

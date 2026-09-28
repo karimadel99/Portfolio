@@ -12,7 +12,7 @@ const linkClass = ({ isActive }) =>
     ? `${linkBase} text-blue dark:text-blue-lit relative after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:bg-orange`
     : `${linkBase} text-ink-3 hover:text-ink`;
 
-export default function Nav() {
+export default function Nav({ onOpenPalette }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggle } = useTheme();
@@ -64,6 +64,16 @@ export default function Nav() {
         <div className="flex items-center gap-3">
           <button
             type="button"
+            onClick={onOpenPalette}
+            aria-label="Open command palette"
+            className="hidden md:inline-flex items-center gap-1.5 mono text-[0.65rem] tracking-[0.08em] text-ink-3 hover:text-ink border border-rule hover:border-ink px-2.5 py-1.5 transition-colors duration-200"
+          >
+            <kbd className="text-[0.6rem]">Ctrl</kbd>
+            <kbd className="text-[0.6rem]">K</kbd>
+          </button>
+
+          <button
+            type="button"
             onClick={toggle}
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             className="w-11 h-11 flex items-center justify-center text-ink-2 hover:text-orange transition-colors duration-200"
@@ -72,7 +82,7 @@ export default function Nav() {
           </button>
 
           <a
-            href="https://drive.google.com/drive/folders/11qfTX5ReRnbUlhDDoTM_RNf57vKKKU3W"
+            href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex btn btn-primary !py-2 !px-3.5 !text-[0.7rem]"
@@ -128,7 +138,7 @@ export default function Nav() {
           ))}
           <li className="pt-2">
             <a
-              href="https://drive.google.com/drive/folders/11qfTX5ReRnbUlhDDoTM_RNf57vKKKU3W"
+              href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary w-full justify-center"

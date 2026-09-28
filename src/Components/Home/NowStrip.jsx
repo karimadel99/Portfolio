@@ -1,7 +1,7 @@
 const NOW = [
-  { label: 'Building', value: 'Soficopharm clinic SaaS' },
+  { label: 'Building', value: '4-portal MedTech platform' },
   { label: 'Studying', value: 'Agents · RAG · Evals' },
-  { label: 'Available', value: 'Q2 2026 · Remote' },
+  { label: 'Available', value: 'Q4 2026 · Remote' },
 ];
 
 export default function NowStrip() {
