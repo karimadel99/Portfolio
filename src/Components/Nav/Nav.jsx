@@ -1,20 +1,25 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { FaFileAlt } from 'react-icons/fa';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import { navLinks } from '@/data/navLinks';
+import { useTheme } from '@/hooks/useTheme';
 
-const activeClass =
-  'block py-2 px-3 text-indigo-400 font-semibold md:p-0 nav-active-underline';
-const inactiveClass =
-  'block py-2 px-3 text-slate-400 rounded hover:text-white hover:bg-slate-800 md:hover:bg-transparent md:hover:text-slate-200 md:p-0 transition-colors duration-200';
-const navLinkClass = ({ isActive }) => (isActive ? activeClass : inactiveClass);
+const linkBase =
+  'mono text-[0.78rem] tracking-[0.08em] uppercase py-2 transition-colors duration-200';
 
-export default function Nav() {
+const linkClass = ({ isActive }) =>
+  isActive
+    ? `${linkBase} text-blue dark:text-blue-lit relative after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:bg-orange`
+    : `${linkBase} text-ink-3 hover:text-ink`;
+
+export default function Nav({ onOpenPalette }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -23,67 +28,126 @@ export default function Nav() {
 
   return (
     <nav
-      className={`bg-slate-900/95 backdrop-blur-md border-b border-slate-800/80 fixed w-full z-20 top-0 start-0 transition-shadow duration-300 ${
-        scrolled ? 'shadow-lg shadow-black/30' : ''
+      className={`fixed top-0 left-0 right-0 z-30 transition-all duration-300 ${
+        scrolled
+          ? 'bg-paper/85 backdrop-blur-md border-b border-rule'
+          : 'bg-transparent border-b border-transparent'
       }`}
+      style={{ color: 'var(--ink)' }}
     >
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="max-w-screen-2xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+
+        {/* Logo */}
         <Link
           to="/"
           onClick={closeMenu}
-          className="self-center text-2xl font-bold whitespace-nowrap text-white font-montserrat hover:text-indigo-400 transition-colors duration-200"
+          className="flex items-baseline gap-2 group"
+          aria-label="Karim Adel — Home"
         >
-          KA<span className="text-indigo-400">.</span>
+          <span className="serif-display text-2xl text-ink">Karim</span>
+          <span className="serif-display text-2xl italic text-orange">Adel</span>
+          <span className="mono text-[0.65rem] text-ink-3 tracking-[0.18em] hidden sm:inline ml-1">/ FE+AI</span>
         </Link>
 
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <a
-            href="https://drive.google.com/drive/folders/11qfTX5ReRnbUlhDDoTM_RNf57vKKKU3W"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white bg-indigo-600 hover:bg-indigo-500 font-roboto font-medium rounded-lg text-sm px-4 py-2 text-center flex items-center gap-2 transition-colors duration-200"
+        {/* Center links — desktop */}
+        <ul className="hidden md:flex items-center gap-8">
+          {navLinks.map(({ to, label, end }) => (
+            <li key={to}>
+              <NavLink to={to} end={end} className={linkClass} onClick={closeMenu}>
+                <span className="text-orange mr-1.5">·</span>{label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+
+        {/* Right cluster */}
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={onOpenPalette}
+            aria-label="Open command palette"
+            className="hidden md:inline-flex items-center gap-1.5 mono text-[0.65rem] tracking-[0.08em] text-ink-3 hover:text-ink border border-rule hover:border-ink px-2.5 py-1.5 transition-colors duration-200"
           >
-            <FaFileAlt size={12} />
-            Resume
-          </a>
+            <kbd className="text-[0.6rem]">Ctrl</kbd>
+            <kbd className="text-[0.6rem]">K</kbd>
+          </button>
 
           <button
-            onClick={() => setIsMenuOpen(prev => !prev)}
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-slate-400 rounded-lg md:hidden hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-700 transition-colors"
-            aria-controls="navbar-sticky"
-            aria-expanded={isMenuOpen}
-            aria-label="Toggle navigation"
+            onClick={toggle}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            className="w-11 h-11 flex items-center justify-center text-ink-2 hover:text-orange transition-colors duration-200"
           >
-            <span className="sr-only">Open main menu</span>
-            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M1 1h15M1 7h15M1 13h15" />
-            </svg>
+            {theme === 'dark' ? <FaSun size={14} /> : <FaMoon size={14} />}
+          </button>
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex btn btn-primary !py-2 !px-3.5 !text-[0.7rem]"
+          >
+            Resume <span aria-hidden>↗</span>
+          </a>
+
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(prev => !prev)}
+            aria-controls="primary-menu"
+            aria-expanded={isMenuOpen}
+            aria-label="Toggle menu"
+            className="md:hidden w-11 h-11 flex items-center justify-center text-ink-2"
+          >
+            <div className="relative w-5 h-3.5">
+              <span
+                className={`absolute left-0 right-0 h-0.5 bg-current transition-transform duration-300 ${
+                  isMenuOpen ? 'top-1.5 rotate-45' : 'top-0'
+                }`}
+              />
+              <span
+                className={`absolute left-0 right-0 h-0.5 bg-current transition-opacity duration-200 top-1.5 ${
+                  isMenuOpen ? 'opacity-0' : 'opacity-100'
+                }`}
+              />
+              <span
+                className={`absolute left-0 right-0 h-0.5 bg-current transition-transform duration-300 ${
+                  isMenuOpen ? 'top-1.5 -rotate-45' : 'top-3'
+                }`}
+              />
+            </div>
           </button>
         </div>
+      </div>
 
-        <div
-          id="navbar-sticky"
-          className={`w-full md:flex md:w-auto md:order-1 overflow-hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'
-          }`}
-        >
-          <ul className="flex font-roboto flex-col p-4 md:p-0 mt-4 font-medium border border-slate-700 rounded-lg bg-slate-800 md:space-x-10 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
-            {navLinks.map(({ to, icon: Icon, label, end }) => (
-              <li key={to}>
-                <NavLink
-                  to={to}
-                  end={end}
-                  className={navLinkClass}
-                  onClick={closeMenu}
-                >
-                  <Icon className="inline mr-1.5 opacity-70" size={13} />
-                  {label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
+      {/* Mobile menu drawer */}
+      <div
+        id="primary-menu"
+        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out border-t ${
+          isMenuOpen ? 'max-h-80 opacity-100 border-rule' : 'max-h-0 opacity-0 border-transparent'
+        }`}
+      >
+        <ul className="px-6 py-4 flex flex-col gap-4 bg-paper/95 backdrop-blur-md">
+          {navLinks.map(({ to, label, end }, i) => (
+            <li key={to} className="flex items-baseline gap-3">
+              <span className="mono text-[0.65rem] text-ink-3">{String(i + 1).padStart(2, '0')}</span>
+              <NavLink to={to} end={end} className={linkClass} onClick={closeMenu}>
+                {label}
+              </NavLink>
+            </li>
+          ))}
+          <li className="pt-2">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary w-full justify-center"
+              onClick={closeMenu}
+            >
+              Resume ↗
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
   );

@@ -125,6 +125,11 @@ dist
 # Git worktrees
 .worktrees/
 
+# Local agent working files
+.superpowers/
+.claude/
+memory/
+
 # yarn v2
 .yarn/cache
 .yarn/unplugged
