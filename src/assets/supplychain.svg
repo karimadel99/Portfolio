@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Supply-chain optimization dashboard illustration">
+  <rect width="800" height="500" fill="#0d1526"/>
+  <!-- grid rules -->
+  <g stroke="#1e293b" stroke-width="1">
+    <line x1="60" y1="100" x2="740" y2="100"/>
+    <line x1="60" y1="180" x2="740" y2="180"/>
+    <line x1="60" y1="260" x2="740" y2="260"/>
+    <line x1="60" y1="340" x2="740" y2="340"/>
+    <line x1="60" y1="420" x2="740" y2="420"/>
+  </g>
+  <!-- stacked bars -->
+  <g>
+    <g transform="translate(100,0)">
+      <rect x="0" y="300" width="46" height="120" fill="#1e3a8a"/>
+      <rect x="0" y="252" width="46" height="48" fill="#3b82f6"/>
+      <rect x="0" y="224" width="46" height="28" fill="#f97316"/>
+    </g>
+    <g transform="translate(190,0)">
+      <rect x="0" y="270" width="46" height="150" fill="#1e3a8a"/>
+      <rect x="0" y="216" width="46" height="54" fill="#3b82f6"/>
+      <rect x="0" y="196" width="46" height="20" fill="#f97316"/>
+    </g>
+    <g transform="translate(280,0)">
+      <rect x="0" y="320" width="46" height="100" fill="#1e3a8a"/>
+      <rect x="0" y="262" width="46" height="58" fill="#3b82f6"/>
+      <rect x="0" y="234" width="46" height="28" fill="#f97316"/>
+    </g>
+    <g transform="translate(370,0)">
+      <rect x="0" y="240" width="46" height="180" fill="#1e3a8a"/>
+      <rect x="0" y="192" width="46" height="48" fill="#3b82f6"/>
+      <rect x="0" y="170" width="46" height="22" fill="#f97316"/>
+    </g>
+    <g transform="translate(460,0)">
+      <rect x="0" y="286" width="46" height="134" fill="#1e3a8a"/>
+      <rect x="0" y="238" width="46" height="48" fill="#3b82f6"/>
+      <rect x="0" y="212" width="46" height="26" fill="#f97316"/>
+    </g>
+    <g transform="translate(550,0)">
+      <rect x="0" y="256" width="46" height="164" fill="#1e3a8a"/>
+      <rect x="0" y="200" width="46" height="56" fill="#3b82f6"/>
+      <rect x="0" y="176" width="46" height="24" fill="#f97316"/>
+    </g>
+    <g transform="translate(640,0)">
+      <rect x="0" y="230" width="46" height="190" fill="#1e3a8a"/>
+      <rect x="0" y="180" width="46" height="50" fill="#3b82f6"/>
+      <rect x="0" y="152" width="46" height="28" fill="#f97316"/>
+    </g>
+  </g>
+  <!-- forecast line -->
+  <polyline points="123,190 213,160 303,204 393,140 483,178 573,146 663,118"
+            fill="none" stroke="#f97316" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#0d1526" stroke="#f97316" stroke-width="3">
+    <circle cx="123" cy="190" r="5"/>
+    <circle cx="213" cy="160" r="5"/>
+    <circle cx="303" cy="204" r="5"/>
+    <circle cx="393" cy="140" r="5"/>
+    <circle cx="483" cy="178" r="5"/>
+    <circle cx="573" cy="146" r="5"/>
+    <circle cx="663" cy="118" r="5"/>
+  </g>
+  <!-- header chrome -->
+  <rect x="60" y="36" width="180" height="12" rx="2" fill="#334155"/>
+  <rect x="60" y="58" width="110" height="8" rx="2" fill="#1e293b"/>
+  <rect x="600" y="36" width="64" height="22" rx="2" fill="#1e3a8a"/>
+  <rect x="676" y="36" width="64" height="22" rx="2" fill="#f97316"/>
+  <!-- footer label -->
+  <text x="60" y="472" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="16" letter-spacing="4" fill="#64748b">FORECAST · ALLOCATE · OPTIMIZE</text>
+</svg>

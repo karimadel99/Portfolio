@@ -29,8 +29,8 @@ export default function Projects() {
                 The <span className="italic text-orange">index.</span>
               </h1>
               <p className="text-ink-2 text-base md:text-lg leading-relaxed mt-6 max-w-[58ch]">
-                {projects.length} shipped projects spanning AI tools, e-commerce,
-                marketplaces, and small craft pieces. Sorted newest first.
+                {projects.length} shipped projects spanning supply-chain optimization,
+                AI tools, e-commerce, and marketplaces. Sorted newest first.
                 <span className="hidden md:inline"> Featured entries are marked.</span>
               </p>
             </div>
@@ -92,10 +92,10 @@ export default function Projects() {
               {projects.map((p, i) => (
                 <li key={p.title} className="group border-b border-rule">
                   <a
-                    href={p.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${p.title} — open live demo`}
+                    href={p.demo ?? undefined}
+                    target={p.demo ? '_blank' : undefined}
+                    rel={p.demo ? 'noopener noreferrer' : undefined}
+                    aria-label={p.demo ? `${p.title} — open live demo` : `${p.title} — private client work`}
                     className="grid grid-cols-12 gap-3 md:gap-6 items-center py-6 md:py-8 px-2 md:px-3 transition-colors duration-300 hover:bg-blue-ghost relative"
                   >
                     {/* Index */}
@@ -126,10 +126,16 @@ export default function Projects() {
                     {/* Year + Arrow */}
                     <div className="col-span-12 md:col-span-3 flex items-center justify-between md:justify-end gap-4 md:gap-6">
                       <span className="mono text-sm text-ink-3">{p.year}</span>
-                      <span className="mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-2 flex items-center gap-1.5 group-hover:text-orange transition-all">
-                        Open
-                        <FaArrowRight size={10} className="transition-transform group-hover:translate-x-1" />
-                      </span>
+                      {p.demo ? (
+                        <span className="mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-2 flex items-center gap-1.5 group-hover:text-orange transition-all">
+                          Open
+                          <FaArrowRight size={10} className="transition-transform group-hover:translate-x-1" />
+                        </span>
+                      ) : (
+                        <span className="mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-3">
+                          Private
+                        </span>
+                      )}
                     </div>
 
                     {/* Hover preview image — desktop only */}
@@ -142,6 +148,7 @@ export default function Projects() {
                   </a>
 
                   {/* Secondary links — visible on mobile, hover-revealed desktop */}
+                  {(p.repo || p.demo) && (
                   <div className="px-2 md:px-3 pb-4 md:pb-3 flex gap-5 md:opacity-0 md:group-hover:opacity-100 md:max-h-0 md:group-hover:max-h-12 md:overflow-hidden transition-all duration-300">
                     {p.repo && (
                       <a
@@ -153,15 +160,18 @@ export default function Projects() {
                         <FaGithub size={11} /> Source
                       </a>
                     )}
-                    <a
-                      href={p.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-3 hover:text-orange transition-colors flex items-center gap-1.5"
-                    >
-                      <FaExternalLinkAlt size={10} /> Demo
-                    </a>
+                    {p.demo && (
+                      <a
+                        href={p.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-3 hover:text-orange transition-colors flex items-center gap-1.5"
+                      >
+                        <FaExternalLinkAlt size={10} /> Demo
+                      </a>
+                    )}
                   </div>
+                  )}
                 </li>
               ))}
             </ul>

@@ -1,13 +1,23 @@
 import emarket from '@/assets/e-market.png';
 import cloudy from '@/assets/cloudy.png';
-import crud from '@/assets/crud.png';
-import quotes from '@/assets/randomQuotes.png';
-import meals from '@/assets/themealsite.png';
 import games from '@/assets/gameReview.png';
 import resuforge from '@/assets/resuforge.png';
 import jobconnect from '@/assets/jobconnect.png';
+import supplychain from '@/assets/supplychain.svg';
 
 export const projects = [
+  {
+    title: 'Supply-Chain Intelligence',
+    image: supplychain,
+    repo: null,
+    demo: null,
+    description: '6-screen optimization dashboard for a food-production client — demand forecasting, SKU allocation, frozen-inventory planning, and forecast-accuracy evaluation (WAPE/MAPE) over a Python optimization engine.',
+    tags: ['React', 'TypeScript', 'Zod', 'Tailwind CSS'],
+    role: 'Client Work · Frontend',
+    year: 2026,
+    featured: true,
+    status: 'private',
+  },
   {
     title: 'ResuForge',
     image: resuforge,
@@ -41,7 +51,6 @@ export const projects = [
     tags: ['React', 'Bootstrap', 'Context API'],
     role: 'Solo Build',
     year: 2024,
-    featured: true,
     status: 'live',
   },
   {
@@ -64,39 +73,6 @@ export const projects = [
     tags: ['React', 'RAWG API', 'Bootstrap'],
     role: 'Solo Build',
     year: 2023,
-    status: 'live',
-  },
-  {
-    title: 'The Meal Site',
-    image: meals,
-    repo: 'https://github.com/karimadel99/TheMealSite',
-    demo: 'https://karimadel99.github.io/TheMealSite/',
-    description: 'Recipe search app powered by TheMealDB API — browse by category or search any dish.',
-    tags: ['JavaScript', 'MealDB API', 'CSS3'],
-    role: 'Solo Build',
-    year: 2023,
-    status: 'live',
-  },
-  {
-    title: 'Store CRUD',
-    image: crud,
-    repo: 'https://github.com/karimadel99/CRUD-Store-management-System',
-    demo: 'https://karimadel99.github.io/CRUD-Store-management-System/',
-    description: 'Store inventory management system with full Create, Read, Update, Delete operations.',
-    tags: ['JavaScript', 'Bootstrap', 'LocalStorage'],
-    role: 'Solo Build',
-    year: 2023,
-    status: 'live',
-  },
-  {
-    title: 'Random Quotes',
-    image: quotes,
-    repo: 'https://github.com/karimadel99/Quote-Generator-',
-    demo: 'https://karimadel99.github.io/Quote-Generator-/',
-    description: 'Generates random inspirational quotes with one-click copy and Twitter share support.',
-    tags: ['JavaScript', 'CSS3', 'Clipboard API'],
-    role: 'Solo Build',
-    year: 2022,
     status: 'live',
   },
 ];
