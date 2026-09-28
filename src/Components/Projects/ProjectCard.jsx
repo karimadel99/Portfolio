@@ -56,19 +56,25 @@ export default function ProjectCard({ project, index, accent = false }) {
               <FaGithub size={13} /> Code
             </a>
           )}
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`flex items-center gap-1.5 mono text-[0.72rem] uppercase tracking-[0.14em] text-blue dark:text-blue-lit hover:text-orange transition-colors ${project.repo ? 'ml-auto' : ''}`}
-            aria-label={`${project.title} live demo`}
-          >
-            <FaExternalLinkAlt size={11} /> Live
-            <FaArrowRight
-              size={10}
-              className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
-            />
-          </a>
+          {project.demo ? (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-1.5 mono text-[0.72rem] uppercase tracking-[0.14em] text-blue dark:text-blue-lit hover:text-orange transition-colors ${project.repo ? 'ml-auto' : ''}`}
+              aria-label={`${project.title} live demo`}
+            >
+              <FaExternalLinkAlt size={11} /> Live
+              <FaArrowRight
+                size={10}
+                className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+              />
+            </a>
+          ) : (
+            <span className="mono text-[0.72rem] uppercase tracking-[0.14em] text-ink-3">
+              Private client work
+            </span>
+          )}
         </div>
       </div>
     </article>
