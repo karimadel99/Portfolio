@@ -2,14 +2,19 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { FaArrowRight, FaGithub, FaLinkedin } from 'react-icons/fa';
-import myPic from '@/assets/me-Photoroom.png';
+import myPic from '@/assets/me-640.webp';
 import Marquee from './Marquee';
 import NowStrip from './NowStrip';
 import ScrambleText from '../UI/ScrambleText';
 import Magnetic from '../UI/Magnetic';
+import Seo from '../Seo/Seo';
+
+// LCP image hint. Lowercase on purpose: React 18 passes it through as a plain
+// HTML attribute (camelCase fetchPriority is only recognised from React 19).
+const HERO_IMG_PRIORITY = { fetchpriority: 'high' };
 
 const ROLES = [
-  'Frontend Tech Lead',
+  'Software Engineering Tech Lead',
   'React · Next · TypeScript',
   'AI Integrations',
   'Coding Instructor',
@@ -55,6 +60,7 @@ export default function Home() {
 
   return (
     <>
+      <Seo path="/" />
       {/* ── Hero ───────────────────────────────────────────────── */}
       <section ref={heroRef} className="relative">
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10 pt-10 md:pt-20 pb-16">
@@ -73,15 +79,14 @@ export default function Home() {
                 <span className="flex-1 h-px bg-rule" />
               </motion.div>
 
-              <motion.h1
-                {...fade}
-                transition={{ duration: 0.7, delay: 0.05, ease: [0.2, 0.7, 0.2, 1] }}
+              {/* LCP text: no entrance animation so it paints from the static HTML. */}
+              <h1
                 className="serif-display text-[3.2rem] sm:text-[4.5rem] md:text-[5.8rem] lg:text-[7rem] leading-[0.92] text-ink"
               >
                 Karim
                 <br />
                 <span className="italic text-orange">Adel.</span>
-              </motion.h1>
+              </h1>
 
               <motion.div
                 {...fade}
@@ -93,17 +98,15 @@ export default function Home() {
                 <span className="text-orange animate-caret" aria-hidden="true">_</span>
               </motion.div>
 
-              <motion.p
-                {...fade}
-                transition={{ duration: 0.6, delay: 0.22 }}
+              <p
                 className="text-ink-2 dark:text-ink-2 text-base md:text-lg max-w-[58ch] leading-relaxed"
               >
                 I'm a CS/AI graduate from Helwan University building production React
-                interfaces — currently the Frontend Tech Lead at <span className="text-ink font-semibold">Soficopharm MedTech</span>,
+                interfaces — currently the Software Engineering Tech Lead at <span className="text-ink font-semibold">Soficopharm MedTech</span>,
                 architect and sole builder of a 4-portal patient-support platform.
                 On the side I ship AI products and supply-chain optimization
                 dashboards at Datalentech.
-              </motion.p>
+              </p>
 
               <motion.div
                 {...fade}
@@ -138,9 +141,7 @@ export default function Home() {
             </div>
 
             {/* Right — editorial photo + meta */}
-            <motion.aside
-              {...fade}
-              transition={{ duration: 0.7, delay: 0.25, ease: [0.2, 0.7, 0.2, 1] }}
+            <aside
               className="col-span-12 md:col-span-5 lg:col-span-5 flex flex-col items-center md:items-end gap-6"
             >
               <motion.div style={{ y: photoY }} className="photo-editorial w-56 sm:w-64 md:w-full max-w-[320px]">
@@ -149,6 +150,7 @@ export default function Home() {
                   alt="Karim Adel"
                   width={400}
                   height={400}
+                  {...HERO_IMG_PRIORITY}
                   className="w-full h-auto object-cover aspect-square"
                 />
               </motion.div>
@@ -156,11 +158,11 @@ export default function Home() {
               {/* Meta block */}
               <motion.div style={{ y: metaY }} className="w-full max-w-[320px] mono text-[0.72rem] text-ink-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 pt-2">
                 <span className="text-ink-3">LOC</span>   <span>Cairo, EG · Remote</span>
-                <span className="text-ink-3">ROLE</span>  <span>Frontend Tech Lead</span>
+                <span className="text-ink-3">ROLE</span>  <span>Software Engineering Tech Lead</span>
                 <span className="text-ink-3">STACK</span> <span>React · Next · Tailwind</span>
                 <span className="text-ink-3">EDU</span>   <span>BSc CS·AI · Helwan ’25</span>
               </motion.div>
-            </motion.aside>
+            </aside>
           </div>
         </div>
       </section>
@@ -270,3 +272,5 @@ export default function Home() {
     </>
   );
 }
+
+export const Component = Home;

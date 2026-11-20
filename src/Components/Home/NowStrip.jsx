@@ -22,7 +22,7 @@ export default function NowStrip() {
           ))}
         </ul>
 
-        <span className="hidden md:inline mono text-[0.7rem] text-ink-3 tracking-[0.18em]">
+        <span className="hidden md:inline mono text-[0.7rem] text-ink-3 tracking-[0.18em]" suppressHydrationWarning>
           {new Date().toISOString().slice(0, 10)}
         </span>
       </div>
