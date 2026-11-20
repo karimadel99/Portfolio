@@ -56,6 +56,16 @@ export default function ProjectCard({ project, index, accent = false }) {
               <FaGithub size={13} /> Code
             </a>
           )}
+          {project.guides && (
+            <a
+              href={project.guides}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mono text-[0.72rem] uppercase tracking-[0.14em] text-ink-2 hover:text-orange transition-colors"
+            >
+              Guides I wrote
+            </a>
+          )}
           {project.demo ? (
             <a
               href={project.demo}

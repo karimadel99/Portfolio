@@ -12,9 +12,17 @@ function getInitial() {
 const SYNC_EVENT = 'ka-theme-change';
 
 export function useTheme() {
-  const [theme, setTheme] = useState(getInitial);
+  // null until mounted: the prerendered HTML can't know the visitor's theme, so
+  // the first client render must match the server. The inline script in
+  // index.html has already applied the right class before paint.
+  const [theme, setTheme] = useState(null);
 
   useEffect(() => {
+    setTheme(getInitial());
+  }, []);
+
+  useEffect(() => {
+    if (theme === null) return;
     const root = document.documentElement;
     if (theme === 'dark') root.classList.add('dark');
     else root.classList.remove('dark');
@@ -30,7 +38,7 @@ export function useTheme() {
 
   const toggle = useCallback(() => {
     setTheme(prev => {
-      const next = prev === 'dark' ? 'light' : 'dark';
+      const next = (prev ?? getInitial()) === 'dark' ? 'light' : 'dark';
       queueMicrotask(() =>
         window.dispatchEvent(new CustomEvent(SYNC_EVENT, { detail: next }))
       );
@@ -38,5 +46,5 @@ export function useTheme() {
     });
   }, []);
 
-  return { theme, toggle };
+  return { theme: theme ?? 'light', toggle };
 }

@@ -1,5 +1,11 @@
 {
-  "rewrites": [
-    { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "portfolio-karimadels-projects.vercel.app" }],
+      "destination": "https://karimadel.vercel.app/:path*",
+      "permanent": true
+    }
   ]
 }

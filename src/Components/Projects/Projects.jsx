@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaArrowRight, FaThLarge, FaList, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { projects } from '@/data/projects';
+import { writing, writingIndex } from '@/data/writing';
 import ProjectCard from './ProjectCard';
+import Seo from '../Seo/Seo';
 
 export default function Projects() {
   const [view, setView] = useState('index'); // 'index' | 'grid'
@@ -14,6 +16,7 @@ export default function Projects() {
 
   return (
     <>
+      <Seo path="/projects" />
       {/* ── Header ─────────────────────────────────────────────── */}
       <section className="relative">
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10 pt-10 md:pt-20 pb-12">
@@ -143,7 +146,7 @@ export default function Projects() {
                       className="hidden lg:block pointer-events-none absolute right-32 top-1/2 -translate-y-1/2 w-44 h-28 overflow-hidden border border-ink opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 z-10 shadow-lg"
                       aria-hidden="true"
                     >
-                      <img src={p.image} alt="" className="w-full h-full object-cover" />
+                      <img src={p.image} alt="" width={176} height={112} loading="lazy" className="w-full h-full object-cover" />
                     </span>
                   </a>
 
@@ -170,12 +173,60 @@ export default function Projects() {
                         <FaExternalLinkAlt size={10} /> Demo
                       </a>
                     )}
+                    {p.guides && (
+                      <a
+                        href={p.guides}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-3 hover:text-orange transition-colors"
+                      >
+                        Guides I wrote
+                      </a>
+                    )}
                   </div>
                   )}
                 </li>
               ))}
             </ul>
           )}
+        </div>
+      </section>
+
+      {/* ── Writing ────────────────────────────────────────────── */}
+      <section className="border-t border-rule" aria-labelledby="writing-heading">
+        <div className="max-w-screen-xl mx-auto px-6 lg:px-10 py-16 md:py-20 grid grid-cols-12 gap-6 md:gap-10">
+          <div className="col-span-12 md:col-span-4">
+            <p className="eyebrow">Writing</p>
+            <h2 id="writing-heading" className="serif-display text-3xl md:text-5xl mt-3 leading-[1] text-ink">
+              Guides from <span className="italic text-orange">ResuForge.</span>
+            </h2>
+            <p className="text-ink-2 text-sm md:text-base leading-relaxed mt-4 max-w-[40ch]">
+              Practical articles I wrote on CVs and applicant tracking systems, in English and Arabic.
+            </p>
+          </div>
+          <ul className="col-span-12 md:col-span-8 border-t border-rule">
+            {writing.map(({ title, href, summary }) => (
+              <li key={href} className="border-b border-rule">
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block py-5 px-2 md:px-3 transition-colors duration-300 hover:bg-blue-ghost"
+                >
+                  <h3 className="serif-display text-xl md:text-2xl text-ink leading-tight group-hover:text-blue dark:group-hover:text-blue-lit transition-colors">
+                    {title}
+                    <FaArrowRight size={11} className="inline ml-2 align-middle transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </h3>
+                  <p className="text-ink-2 text-sm leading-relaxed mt-1.5">{summary}</p>
+                </a>
+              </li>
+            ))}
+            <li className="pt-5 px-2 md:px-3">
+              <a href={writingIndex.href} target="_blank" rel="noopener noreferrer" className="editorial-link mono text-sm">
+                {writingIndex.title} →
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -203,3 +254,5 @@ export default function Projects() {
     </>
   );
 }
+
+export const Component = Projects;

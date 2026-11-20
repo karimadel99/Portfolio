@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 import { skills } from '@/data/skills';
 import { useInView } from '@/hooks/useInView';
+import Seo from '../Seo/Seo';
 
 const EXPERIENCES = [
   {
     no: '01',
-    role: 'Frontend Tech Lead',
+    role: 'Software Engineering Tech Lead',
     company: 'Soficopharm — MedTech',
     type: 'Fulltime · Hybrid',
     date: 'Feb 2025 — Present',
@@ -46,6 +47,17 @@ const EXPERIENCES = [
   },
 ];
 
+const GLANCE = [
+  { label: 'Role',      value: 'Software Engineering Tech Lead, Soficopharm MedTech (joined February 2025, Tech Lead since April 2026)' },
+  { label: 'Also',      value: 'Part-time Software Engineer, Datalentech (since August 2025)' },
+  { label: 'Builds',    value: 'Four web portals for a patient-support platform, as architect and sole frontend builder' },
+  { label: 'Product',   value: 'ResuForge, an AI resume builder for English and Arabic CVs, launched October 2026' },
+  { label: 'Education', value: 'B.Sc. Computer Science & Artificial Intelligence, Helwan University, 2025' },
+  { label: 'Teaching',  value: '250+ students taught at Mind Builders Academy, 2023–2024' },
+  { label: 'Stack',     value: 'React, TypeScript, Next.js, Turborepo, Tailwind CSS, Playwright, LLM APIs' },
+  { label: 'Location',  value: 'Cairo, Egypt · works remotely with EU and MENA teams' },
+];
+
 const TOOLKIT_GROUPS = [
   { key: 'core',    label: 'Core' },
   { key: 'styling', label: 'Styling' },
@@ -62,30 +74,31 @@ export default function About() {
 
   return (
     <>
+      <Seo path="/about" />
       {/* ── Hero ───────────────────────────────────────────────── */}
       <section className="relative">
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10 pt-10 md:pt-20 pb-20">
           <div className="grid grid-cols-12 gap-6 md:gap-10">
             <div className="col-span-12 md:col-span-7">
               <div className="flex items-center gap-3 mb-6">
-                <span className="mono text-[0.7rem] tracking-[0.22em] uppercase text-ink-3">
-                  Chapter 02 — About
-                </span>
+                <h1 className="mono text-[0.7rem] tracking-[0.22em] uppercase text-ink-3 font-normal">
+                  Chapter 02 — About Karim Adel
+                </h1>
                 <span className="flex-1 h-px bg-rule" />
               </div>
 
-              <h1 className="serif-display text-[2.8rem] sm:text-[4.2rem] md:text-[5.5rem] leading-[0.95] text-ink">
+              <p className="serif-display text-[2.8rem] sm:text-[4.2rem] md:text-[5.5rem] leading-[0.95] text-ink">
                 Engineer.
                 <br />
                 <span className="italic text-orange">Teacher.</span>
                 <br />
                 <span className="text-ink-2">Builder.</span>
-              </h1>
+              </p>
             </div>
 
             <div className="col-span-12 md:col-span-5 md:col-start-8 flex flex-col gap-5 mt-2">
               <p className="serif-display text-xl md:text-2xl leading-snug text-ink-2 dark:text-ink-2">
-                I'm <span className="text-ink font-semibold">Karim Adel</span> — a frontend tech lead
+                I'm <span className="text-ink font-semibold">Karim Adel</span> — a software engineering tech lead
                 and CS/AI graduate from Helwan University ('25). I work in React, TypeScript, and
                 Tailwind, with production experience on MedTech, SaaS, and supply-chain
                 platforms — and I'm pushing hard into generative AI and agents.
@@ -97,6 +110,33 @@ export default function About() {
                 not extras, they're the work.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── At a glance (plain, quotable facts) ─────────────────── */}
+      <section className="relative border-t border-rule" aria-labelledby="glance-heading">
+        <div className="max-w-screen-xl mx-auto px-6 lg:px-10 py-14 md:py-20 grid grid-cols-12 gap-6 md:gap-10">
+          <div className="col-span-12 md:col-span-4">
+            <p className="eyebrow">At a glance</p>
+            <h2 id="glance-heading" className="serif-display text-3xl md:text-5xl mt-3 leading-[1] text-ink">
+              The <span className="italic text-orange">short</span> version.
+            </h2>
+          </div>
+          <div className="col-span-12 md:col-span-8">
+            <p className="text-ink-2 text-base md:text-lg leading-relaxed max-w-[62ch]">
+              Karim Adel is a Software Engineering Tech Lead based in Cairo, Egypt, who builds
+              production React and TypeScript platforms and AI products, including ResuForge,
+              an AI resume builder for English and Arabic CVs.
+            </p>
+            <dl className="mt-8 border-t border-rule">
+              {GLANCE.map(({ label, value }) => (
+                <div key={label} className="grid grid-cols-12 gap-3 border-b border-rule py-3">
+                  <dt className="col-span-12 sm:col-span-3 mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-3 pt-0.5">{label}</dt>
+                  <dd className="col-span-12 sm:col-span-9 text-ink text-sm md:text-base leading-relaxed">{value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>
@@ -226,3 +266,5 @@ export default function About() {
     </>
   );
 }
+
+export const Component = About;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { FaArrowRight, FaGithub, FaLinkedin, FaCopy, FaCheck, FaEnvelope } from 'react-icons/fa';
+import { FaArrowRight, FaGithub, FaLinkedin, FaCopy, FaCheck, FaEnvelope, FaBriefcase } from 'react-icons/fa';
+import Seo from '../Seo/Seo';
 
 const EMAIL = 'karim.adel9922@gmail.com';
 
@@ -23,6 +24,12 @@ const CHANNELS = [
     value: 'linkedin.com/in/karim-adel-961506222',
     href: 'https://www.linkedin.com/in/karim-adel-961506222/',
     icon: FaLinkedin,
+  },
+  {
+    label: 'Contra',
+    value: 'contra.com/karim_adel_dlbrna7h',
+    href: 'https://contra.com/karim_adel_dlbrna7h/work',
+    icon: FaBriefcase,
   },
 ];
 
@@ -61,6 +68,7 @@ export default function Contact() {
 
   return (
     <>
+      <Seo path="/contact" />
       {/* ── Hero ───────────────────────────────────────────────── */}
       <section className="relative">
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10 pt-10 md:pt-20 pb-16 md:pb-20">
@@ -200,3 +208,5 @@ export default function Contact() {
     </>
   );
 }
+
+export const Component = Contact;

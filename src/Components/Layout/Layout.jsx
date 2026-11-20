@@ -28,7 +28,9 @@ export default function Layout() {
       <Nav onOpenPalette={() => setPaletteOpen(true)} />
       <CommandPalette open={paletteOpen} setOpen={setPaletteOpen} />
 
-      <AnimatePresence mode="wait">
+      {/* initial={false}: the first page shows immediately instead of starting at
+          opacity 0 in the prerendered HTML; later navigations still animate. */}
+      <AnimatePresence mode="wait" initial={false}>
         <motion.main
           key={pathname}
           id="main-content"
