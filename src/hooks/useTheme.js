@@ -48,5 +48,5 @@ export function useTheme() {
   }, []);
 
   const current = theme === null ? 'light' : theme;
-  return { theme: current, toggle };
+  return { theme: current, toggle: toggle };
 }
