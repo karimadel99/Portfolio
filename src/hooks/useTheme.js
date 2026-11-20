@@ -38,7 +38,8 @@ export function useTheme() {
 
   const toggle = useCallback(() => {
     setTheme(prev => {
-      const next = (prev ?? getInitial()) === 'dark' ? 'light' : 'dark';
+      const current = prev === null ? getInitial() : prev;
+      const next = current === 'dark' ? 'light' : 'dark';
       queueMicrotask(() =>
         window.dispatchEvent(new CustomEvent(SYNC_EVENT, { detail: next }))
       );
@@ -46,5 +47,6 @@ export function useTheme() {
     });
   }, []);
 
-  return { theme: theme ?? 'light', toggle };
+  const current = theme === null ? 'light' : theme;
+  return { theme: current, toggle };
 }

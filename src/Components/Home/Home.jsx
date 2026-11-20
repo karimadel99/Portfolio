@@ -9,6 +9,10 @@ import ScrambleText from '../UI/ScrambleText';
 import Magnetic from '../UI/Magnetic';
 import Seo from '../Seo/Seo';
 
+// LCP image hint. Lowercase on purpose: React 18 passes it through as a plain
+// HTML attribute (camelCase fetchPriority is only recognised from React 19).
+const HERO_IMG_PRIORITY = { fetchpriority: 'high' };
+
 const ROLES = [
   'Software Engineering Tech Lead',
   'React · Next · TypeScript',
@@ -146,9 +150,7 @@ export default function Home() {
                   alt="Karim Adel"
                   width={400}
                   height={400}
-                  // Lowercase on purpose: React 18 passes it through as an HTML attribute.
-                  // eslint-disable-next-line react/no-unknown-property
-                  fetchpriority="high"
+                  {...HERO_IMG_PRIORITY}
                   className="w-full h-auto object-cover aspect-square"
                 />
               </motion.div>

@@ -33,7 +33,7 @@ const website = {
 };
 
 // Extra nodes for specific routes.
-const EXTRA = {
+const EXTRA = new Map(Object.entries({
   '/about': [
     {
       '@type': 'ProfilePage',
@@ -54,18 +54,20 @@ const EXTRA = {
       creator: { '@id': PERSON_ID },
     },
   ],
-};
+}));
+
+const PAGE_COPY = new Map(Object.entries(PAGES));
 
 /**
  * Per-route <head>: title, description, canonical, Open Graph, Twitter and
  * JSON-LD. Rendered into static HTML at build time by vite-react-ssg.
  */
 export default function Seo({ path, noindex = false }) {
-  const page = PAGES[path] ?? PAGES['/'];
+  const page = PAGE_COPY.get(path) || PAGE_COPY.get('/');
   const url = path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`;
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@graph': [person, website, ...(EXTRA[path] ?? [])],
+    '@graph': [person, website, ...(EXTRA.get(path) || [])],
   };
 
   return (
