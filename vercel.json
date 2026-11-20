@@ -6,6 +6,12 @@
       "has": [{ "type": "host", "value": "portfolio-karimadels-projects.vercel.app" }],
       "destination": "https://karimadel.vercel.app/:path*",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "portfolio-pink-eta-68.vercel.app" }],
+      "destination": "https://karimadel.vercel.app/:path*",
+      "permanent": true
     }
   ]
 }
